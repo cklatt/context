@@ -29,6 +29,7 @@ class ChannelsController < ApplicationController
   # POST /channels.json
   def create
     @channel = Channel.new(channel_params)
+    @channel.user = current_user
 
     respond_to do |format|
       if @channel.save
