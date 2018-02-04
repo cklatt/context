@@ -1,16 +1,40 @@
-<%= simple_form_for(@channel) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :provider %>
-    <%= f.input :client_id %>
-    <%= f.input :client_secret %>
-    <%= f.input :last_login_at %>
-    <%= f.association :user %>
+<%= form_for @channel, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :provider, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :provider, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :client_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :client_id, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :client_secret, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :client_secret, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_login_at, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :last_login_at, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  channels_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
